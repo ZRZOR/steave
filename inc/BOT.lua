@@ -64,7 +64,7 @@ print('\n\27[1;31m￤ You Did not Enter USERNAME !\n￤ لم تقوم بادخا
 create_config()
 end end
 local REBD = redis:get(ip_login..":TOKEN"):match("(%d+)")
-local getversion = https.request('https://api.th3boss.com/version/')
+local getversion = https.request('https://th3boss.com/version.php')
 redis:set(REBD..":VERSION",getversion)
 redis:sadd(REBD..':PLUGINS_FILE:','cmd_help')
 redis:sadd(REBD..':PLUGINS_FILE:','plug_manager')
