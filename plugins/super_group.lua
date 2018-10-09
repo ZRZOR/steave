@@ -27,13 +27,13 @@ local function xboss(msg, matches)
     end end
     if matches[1] == "تثبيت" and is_mod(msg) and msg.reply_id then
     tdcli_function ({ID = "PinChannelMessage",channel_id_ = getChatId(msg.to.id).ID,message_id_ = msg.reply_id,disable_notification_ = 1}, dl_cb, cmd)
-    return "📌¦عزيزي ال { '..get_rank(msg)..' } تم تثبيت الرسالة "
+    return "📌¦ تم تثبيت الرسالة"
     end
     if matches[1] == "الغاء التثبيت" and is_mod(msg) then
     tdcli_function ({ID = "UnpinChannelMessage",channel_id_ = getChatId(msg.to.id).ID}, dl_cb, cmd)
-    return "❌¦عزيزي ال { '..get_rank(msg)..' } تم الغاء تثبيت الرسالة "
+    return "📌¦ تم الغاء تثبيت الرسالة"
     end
-    if matches[1] == "تقييد" and is_mod(msg) then
+    if matches[1] == "قيدة" and is_mod(msg) then
     if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="tqeed"}) end
     if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,user_id=matches[2],msg_id=msg.id_,cmd="tqeed"}) end
     if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username,{msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="tqeed"}) end 
@@ -43,7 +43,7 @@ local function xboss(msg, matches)
     if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,user_id=matches[2],msg_id=msg.id_,cmd="fktqeed"}) end
     if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username,{msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="fktqeed"}) end 
     end
-    if matches[1] == "رفع عضو مميز" and is_mod(msg) then
+    if matches[1] == "رفعة عضو واصطه" and is_mod(msg) then
     if not matches[2] and msg.reply_id then
     tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {chat_id=msg.to.id,msg_id=msg.id_,cmd="setwhitelist"})
     end
@@ -53,7 +53,7 @@ local function xboss(msg, matches)
     if matches[2] and not string.match(matches[2], '^%d+$') then
     tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="setwhitelist"})
     end end
-    if matches[1] == "تنزيل عضو مميز" and is_mod(msg) then
+    if matches[1] == "نزلة عضو واصطه" and is_mod(msg) then
     if not matches[2] and msg.reply_id then
     tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="remwhitelist"})
     end
@@ -63,7 +63,7 @@ local function xboss(msg, matches)
     if matches[2] and not string.match(matches[2], '^%d+$') then
     tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="remwhitelist"})
     end end
-    if matches[1] == "رفع المدير" and (is_sudo(msg) or is_monsha(msg)) then
+    if matches[1] == "رفعة المدير" and (is_sudo(msg) or is_monsha(msg)) then
     if not matches[2] and msg.reply_id then
     tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="setowner"})
     end
@@ -73,7 +73,7 @@ local function xboss(msg, matches)
     if matches[2] and not string.match(matches[2], '^%d+$') then
     tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="setowner"})
     end end
-    if matches[1] == "تنزيل المدير" and (is_sudo(msg) or is_monsha(msg)) then
+    if matches[1] == "نزلة المدير" and (is_sudo(msg) or is_monsha(msg)) then
     if not matches[2] and msg.reply_id then
     tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="remowner"})
     end
@@ -83,7 +83,7 @@ local function xboss(msg, matches)
     if matches[2] and not string.match(matches[2], '^%d+$') then
     tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="remowner"})
     end end
-    if matches[1] == "رفع منشى" and is_sudo(msg) then
+    if matches[1] == "رفعة منشى" and is_sudo(msg) then
     if not matches[2] and msg.reply_id then
     tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="setmnsha"})
     end
@@ -93,7 +93,7 @@ local function xboss(msg, matches)
     if matches[2] and not string.match(matches[2], '^%d+$') then
     tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="setmnsha"})
     end  end
-    if matches[1] == "تنزيل منشى" and is_sudo(msg) then
+    if matches[1] == "نزلة منشى" and is_sudo(msg) then
     if not matches[2] and msg.reply_id then
     tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="remmnsha"})
     end
@@ -103,7 +103,7 @@ local function xboss(msg, matches)
     if matches[2] and not string.match(matches[2], '^%d+$') then
     tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="remmnsha"})
     end end
-    if matches[1] == "رفع ادمن" and is_owner(msg) then
+    if matches[1] == "رفعة ادمن" and is_owner(msg) then
     if not matches[2] and msg.reply_id then
     tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="promote"})
     end
@@ -113,7 +113,7 @@ local function xboss(msg, matches)
     if matches[2] and not string.match(matches[2], '^%d+$') then
     tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="promote"})
     end end
-    if matches[1] == "تنزيل ادمن" and is_owner(msg) then
+    if matches[1] == "نزلة ادمن" and is_owner(msg) then
     if not matches[2] and msg.reply_id then
     tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="demote"})
     end
@@ -441,11 +441,11 @@ local function xboss(msg, matches)
     return redis:get(boss..'welcome:msg'..msg.to.id)
     else return "🙋🏼‍♂️*¦* أهلا عزيزي \n🌿¦ نورت المجموعه \n💂🏼‍♀️" end end
     if matches[1] == "رفع الادمنيه" and is_owner(msg) then set_admins(msg) end
-    if matches[1] == "كشف"  then
+    if matches[1] == "فحص"  then
     if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="whois"})end 
     if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,msg_id=msg.id_,user_id=matches[2],cmd="whois"}) end
     if matches[2] and not string.match(matches[2], '^%d+$') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="whois"}) end end
-    if matches[1] == "طرد" and is_mod(msg) then
+    if matches[1] == "دفر" and is_mod(msg) then
     if not matches[2] and msg.reply_id then 
     tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,msg_id=msg.id_,cmd="kick"})  end
     if matches[2] and string.match(matches[2], '^%d+$') then
@@ -454,7 +454,7 @@ local function xboss(msg, matches)
     else kick_user(matches[2], msg.to.id) sleep(1) channel_unblock(msg.to.id, matches[2])
     sendMsg(msg.chat_id_, msg.id_,"🙋🏼‍♂️*¦* أهلا عزيزي  \n📡*¦* تم طرد العضو ["..matches[2].."]\n✓","md") end end
     if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,msg_id=msg.id_,username=matches[2],cmd="kick"}) end end
-    if matches[1] == "حظر" and is_mod(msg)  then
+    if matches[1] == "بلوك" and is_mod(msg)  then
     if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="ban"}) end
     if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,user_id=matches[2],msg_id=msg.id_,cmd="ban"}) end
     if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="ban"}) end end
@@ -462,16 +462,16 @@ local function xboss(msg, matches)
     if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="unban"}) end
     if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,user_id=matches[2],msg_id=msg.id_,cmd="uban"}) end
     if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username, {msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="unban"}) end end
-    if matches[1] == "كتم" and is_mod(msg)  then
+    if matches[1] == "سكتة" and is_mod(msg)  then
     if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply, {msg_id=msg.id_,chat_id=msg.to.id,cmd="silent"}) end
     if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id, {chat_id=msg.to.id,user_id=matches[2],msg_id=msg.id_,cmd="ktm"}) end
     if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]}, action_by_username,{msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="silent"}) end end
-    if matches[1] == "الغاء الكتم" and is_mod(msg)  then
+    if matches[1] == "خلي يحجي" and is_mod(msg)  then
     if not matches[2] and msg.reply_id then tdcli_function ({ID = "GetMessage",chat_id_ = msg.to.id,message_id_ = msg.reply_id}, action_by_reply,{msg_id=msg.id_,chat_id=msg.to.id,cmd="unsilent"}) end
     if matches[2] and string.match(matches[2], '^%d+$') then tdcli_function ({ID = "GetUser",user_id_ = matches[2],}, action_by_id,{chat_id=msg.to.id,user_id=matches[2],msg_id=msg.id_,cmd="unktm"}) end
     if matches[2] and string.match(matches[2], '@[%a%d_]') then tdcli_function ({ID = "SearchPublicChat",username_ = matches[2]},action_by_username,{msg_id=msg.id_,chat_id=msg.to.id,username=matches[2],cmd="unsilent"}) end end
-    if matches[1] == "المكتومين" and is_mod(msg)  then return silent_users_list(msg.to.id) end
-    if matches[1] == "المحظورين" and is_mod(msg)  then return banned_list(msg.to.id) end
+    if matches[1] == "الساكتين" and is_mod(msg)  then return silent_users_list(msg.to.id) end
+    if matches[1] == "المحموسين" and is_mod(msg)  then return banned_list(msg.to.id) end
      end -- end of insert group 
      if matches[1] == 'مسح' and matches[2] == 'المطورين' and we_sudo(msg)  then
     if #redis:smembers(boss..':SUDO_BOT:') == 0 then  return "⚙️*¦* عذرا لا يوجد مطورين في البوت  ✖️" end
