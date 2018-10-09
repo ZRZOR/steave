@@ -14,7 +14,7 @@ msgs = tonumber(redis:get(boss..'msgs:'..msg.from.id..':'..msg.to.id) or 1)
 if redis:get(boss..'lock_id'..msg.to.id) then
 tdcli_function({ID = "GetUserProfilePhotos",user_id_=msg.from.id,offset_=0,limit_=1},function(arg, data)
 if data.photos_[0] then
-sendPhoto(msg.to.id,msg.id_,0,1,nil,data.photos_[0].sizes_[1].photo_.persistent_id_,'👤¦ معرفك » '..userxn..'\n🎫¦ ايديك  » '..msg.from.id..'\n🎖¦ رتبتـك » '..get_rank(msg)..'\n📨¦ رسائلك » '..msgs..' رسالةة\n⭐️¦ تفاعلك » '..get_ttl(msgs)..'\n➖',dl_cb,nil) else
+sendPhoto(msg.to.id,msg.id_,0,1,nil,data.photos_[0].sizes_[1].photo_.persistent_id_,'🌐¦ اسمك => ['..check_name(namecut(msg.from.first_name))..']\n💠¦ معرفك => '..userxn..'\n❇️¦ ايديك => '..msg.from.id..'\n🔵¦ رتبتك=> '..get_rank(msg)..'\n⚪️¦ رسائلك => '..msgs..'\n',dl_cb,nil) else
 sendMsg(msg.to.id,msg.id_,'🚸*¦* لا يوجد صوره في بروفايلك ...!\n\n👤*¦* اسمك » ['..check_name(namecut(msg.from.first_name))..']\n🎫*¦* معرفك » ['..userxn..']\n🏷*¦* ايديك » (*'..msg.from.id..'*)\n📮*¦* رتبتك » '..get_rank(msg)..'\n⭐️*¦* تفاعلك » '..get_ttl(msgs)..'\n📨*¦* رسائلك » (*'..msgs..'*) رساله\n➖','md')
 end end,nil) else
 return '👤*¦* اسمك » ['..check_name(namecut(msg.from.first_name))..']\n🎫*¦* معرفك » ['..userxn..']\n🏷*¦* ايديك » (*'..msg.from.id..'*)\n🎖¦ رتبتـك » '..get_rank(msg)..'\n📨¦ رسائلك » '..msgs..' رسالةة\n⭐️¦ تفاعلك » '..get_ttl(msgs)..'\n➖'
